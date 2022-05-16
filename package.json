@@ -11,7 +11,7 @@
     "build": "webpack --mode production",
     "hello": "echo \"hello world\"",
     "cypress:open": "cypress open",
-    "test:e2e": "npx cypress run"
+    "test:e2e": "$(npm bin)/cypress run"
   },
   "repository": {
     "type": "git",
