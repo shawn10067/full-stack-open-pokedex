@@ -19,9 +19,15 @@ jobs:
         run: npm run eslint
       - name: test
         run: npm run test
+      - name: Install dependencies
+        uses: cypress-io/github-action@v2
+        with:
+          runTests: false
+      - run: yarn lint
       - name: e2e tests
         uses: cypress-io/github-action@v2
         with:
+          install: false
           command: npm run test:e2e
           start: npm run start-prod
           wati-on: "http://localhost:5000"
