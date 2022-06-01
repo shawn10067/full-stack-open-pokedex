@@ -7,7 +7,7 @@ on:
 
 jobs:
   simple_deployment_pipeline:
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v2
@@ -19,14 +19,9 @@ jobs:
         run: npm run eslint
       - name: test
         run: npm run test
-      - name: Install dependencies
-        uses: cypress-io/github-action@v2
-        with:
-          runTests: false
       - name: e2e tests
         uses: cypress-io/github-action@v2
         with:
-          install: false
           command: npm run test:e2e
           start: npm run start-prod
-          wati-on: "http://localhost:5000"
+          wait-on: http://localhost:5000
